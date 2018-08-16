@@ -1,0 +1,410 @@
+html, body {
+  width:100%;
+  margin:0;
+}
+.title {
+  width:100%;
+  font-size:50px;
+  text-align:center;
+  text-transform:uppercase;
+  padding: 150px 0;
+  background:  url("https://www.bypeople.com/wp-content/uploads/2014/05/light-live-background-css.jpg");
+}
+.nav-menu, .left-side, .right-side {
+  display:flex;
+}
+.nav-menu {
+  justify-content:space-between;
+  list-style: none;
+  padding:0;
+  background-color:#6271AD;
+  position:fixed;
+  width:100%;
+  margin-top:0;
+}
+.nav-menu li {
+  padding: 10px 20px;
+  color:white;
+  font-size: 19px;
+  cursor:pointer;
+}
+.nav-menu li:hover {
+  background-color: #415291;
+}
+.content {
+  width:75%;
+  margin:0 auto;
+  padding:100px 0;
+}
+
+.content img {
+  border-radius: 50%;
+}
+
+.credentials {
+  display:flex;
+  justify-content:space-between;
+}
+.about-me {
+  flex-basis: 68%;
+  background-color: #C77F5E;
+  color:white;
+  padding:20px;
+  margin-bottom:30px;
+}
+.about-me h1 {
+  margin-top:0;
+  font-size:35px;
+}
+.about-me h2 {
+  margin-bottom:10px;
+}
+hr {
+  width:50%;
+  text-align:left;
+  margin:0;
+  background-color:white;
+  height:1.5px;
+  border:none;
+}
+.contact-info {
+  display:flex;
+}
+.left-contact {
+  flex-basis:40%;
+}
+.contact {
+  display:flex;
+}
+.contact p {
+  margin-top:0;
+  margin-left:10px;
+}
+.contact i {
+  width:16px;
+}
+.fa {
+  text-align:center;
+  font-size:15px;
+}
+.ti hr {
+  width:100%;
+  background-color: #af762a;
+}
+.expertise-list {
+  list-style:none;
+  display:flex;
+  flex-wrap:wrap;
+}
+.expertise-list li {
+  margin:5px;
+  padding:5px 10px;
+  background-color:#C77F5E;
+  border-radius:3px;
+  color:white;
+}
+.brown-content {
+  color:#C77F5E;
+}
+.exp-place, .exp-period, .achievements-list {
+  font-weight:normal;
+  list-style-type: none;
+}
+
+.achievements-list li::before {
+  content: '\2022';
+  color: #C77F5E;
+  font-size:18px;
+  padding-right: 10px;
+}
+
+.rights {
+  background-color: #6271AD;
+  color:white;
+  padding:20px;
+  text-align:center;
+}
+.up {
+  display: none;
+  position:fixed;
+  margin-top:550px;
+  margin-right:10px;
+  border:10px solid  #6271AD;
+  border-radius:50%;
+  padding:10px;
+  background-color: #6271AD;
+  color:white;
+  right:10px;
+  opacity:0;
+  transition: opacity .5s;
+}
+.show-up:hover {
+  cursor:pointer;
+  opacity:.9;
+}
+.show-up {
+  opacity:1;
+}
+.Login {
+  height:100%;
+}
+.login-xs {
+  background-color : #6271AD;
+  height:200px;
+  width:60px;
+  position:fixed;
+  top:50%;
+  transform:translateY(-50%);
+  right:-20px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  transition: right 1.5s;
+}
+.login-xs:hover {
+  background-color: #415291;
+  cursor:pointer;
+}
+.login-xl {
+  height:900px;
+  width:0px;
+  background-color: #6271AD;
+  position:fixed;
+  top:0;
+  right:0;
+  transition: all 1.5s;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.login-xl form {
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  height:200px;
+  justify-content: space-around;
+    width:80%;
+  margin:0 auto;
+  transition: all 1.5s;
+}
+/* .login-xl form input {
+  padding-left:10px;
+} */
+.login-xl form input, button {
+  border:none;
+  height:30px;
+}
+.login-xl form button {
+  font-size:20px;
+  background-color: #6271AD;
+  color:white;
+  border-radius:10px;
+  border:2px solid white;
+}
+.login-xl form button:hover {
+  cursor:pointer;
+  color: lightgrey;
+  border-color:lightgrey;
+}
+.login-xl h1 {
+  color:white;
+  text-align:center;
+}
+.form-type {
+  display:flex;
+  font-size:14px;
+  text-align:center;
+  justify-content: space-between;
+  /* padding:0px 5px; */
+  color:white;
+  border: 4px solid white;
+  border-radius: 50%;
+  width: 120px;
+}
+.form-type * {
+  padding: 0 3px;
+  margin:0px;
+  padding:5px;
+  /* border:1px solid white; */
+  /* border-radius: 3px; */
+  font-weight: normal;
+}
+.form-type *:hover {
+  cursor:pointer;
+}
+.active-form {
+  background-color: white;
+  border-radius:50%;
+  color:#6271AD;
+  font-weight: bolder;
+}
+.hidden-input {
+  display:none;
+}
+.all-form {
+  transform: translateX(300px);
+  transition: transform 1s;
+}
+.submit:focus {
+  outline:none;
+}
+.error {
+  margin:0;
+  /* position:absolute; */
+  /* transform: translateY(-25px); */
+  color: #FFF;
+  position:absolute;
+  opacity:0;
+  transition: opacity .5s;
+}
+.err1 {
+  top:-10px;
+}
+.err2 {
+  top:60px;
+}
+.bad {
+  opacity:1;
+  text-shadow:
+   -1px -1px 0 #D93240,
+    1px -1px 0 #D93240,
+    -1px 1px 0 #D93240,
+     1px 1px 0 #D93240;
+}
+.good {
+  opacity:1;
+  text-shadow:
+   -1px -1px 0 #58EB9C,
+    1px -1px 0 #58EB9C,
+    -1px 1px 0 #58EB9C,
+     1px 1px 0 #58EB9C;
+}
+.label {
+  position:relative;
+  top:50%;
+  transform:translateY(-50%);
+  transform:rotate(-90deg);
+  right:10px;
+  color:white
+}
+.label1 {
+  position:relative;
+  transform: rotate(-90deg);
+  right:10px;
+  font-size:18px;
+}
+.login-xs {
+  display:flex;
+  flex-direction:column;
+  justify-content: space-around;
+  color:white;
+}
+.login-xs div:first-child {
+  order:2;
+}
+.login-xs div:last-child {
+  order:1;
+}
+.login-xs:active {
+  background-color: #415291;
+}
+.input-div {
+  position:relative;
+}
+.input-div input {
+  z-index:1;
+  opacity:0;
+  background:#6271AD;
+  color:white;
+  width:100%;
+}
+.input-div input:focus {
+  outline:none;
+}
+.input-label {
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  transition:transform .5s;
+  color:white;
+  z-index:-1;
+  animation: labelShrink .8s linear 0s forwards;
+}
+.onlabel {
+  left:0px;
+  color:white;
+  transform:translateY(-200%);
+  animation: labelGrow .8s linear 0s forwards;
+}
+/* Animated border */
+.border {
+  width:0;
+  height:2px;
+  background-color:white;
+  position:absolute;
+  transition: width 1s;
+}
+.border-bottom {
+  left:0;
+  /* transform:translateX(-50%); */
+  bottom:0;
+}
+.border-right {
+  bottom:0;
+  width: 32px;
+  right: 0;
+  bottom: 0;
+  transition: transform 1s;
+  transform-origin: top left;
+  transform: rotate(90deg);
+  transform-origin: bottom right;
+}
+.border-up {
+  width:20px;
+  right:0;
+  top:0;
+}
+.border-left {
+  width:10px;
+  top:0;
+  left:0;
+  transform-origin: top left;
+  transform: rotate(90deg);
+  width: 32px;
+}
+/* Class used to animate the opacity of the input */
+.show-input {
+  animation: inputOpacity 0s linear .3s forwards;
+}
+
+.modify-labels {
+  animation: labelGrow 1s linear .3s forwards;
+}
+/* Keyframes */
+@keyframes inputOpacity {
+    0%   {opacity:0}
+    75%  {opacity:0}
+    100% {opacity:1}
+}
+
+/* Keyframes used to change the font-size of the labels when they get positioned
+on top inputs */
+@keyframes labelGrow {
+    0%   {font-size:16px}
+    25%  {font-size:16.5px}
+    50%  {font-size:17px}
+    80% {font-size:17.5px}
+    100% {font-size:17.5px}
+}
+@keyframes labelShrink {
+  0% {font-size:17.5px}
+  25%  {font-size:17px}
+  50%  {font-size:16.5px}
+  80%   {font-size:16px}
+  100%   {font-size:16px}
+}
+@keyframes animateBorder {
+  0%     {border-bottom-width:100%}
+  40%    {border-right-width: 100%}
+  80%    {border-top-width:100%}
+  100%   {border-left-width:100%}
+}

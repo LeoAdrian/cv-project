@@ -1,0 +1,16 @@
+  const navbar = document.querySelector('.nav-menu');
+  const box = document.querySelector('.about-me');
+  const upButton = document.querySelector('.up');
+  const loginBtn = document.querySelector('.login-xs');
+  const loginForm = document.querySelector('.login-xl');
+  const toggleBtns = document.querySelectorAll('.form-type h3');
+  const formName = document.querySelector('.login-xl h1');
+  const form = document.querySelector('form');
+  const hiddenInp = document.querySelector('.hidden-input');
+  const submitBtn = document.querySelector('form button');
+  const allForm = document.querySelector('.all-form');
+  const submit  = document.querySelector('.submit');
+  const up  = document.querySelector('.up');
+  const formEl  = document.querySelectorAll('.actual-form input');
+  const errors  = document.querySelectorAll('.error');
+  const inputLabels = document.querySelectorAll('.input-label');
