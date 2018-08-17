@@ -112,7 +112,7 @@ function checkToggled( el, index, toggledArr ) {
       // Get the div that contains the label for the input
       // document.querySelector('body').addEventListener('click', function())
       const label = this.previousElementSibling.previousElementSibling;
-      console.log(this.value);
+      
       // Array that will contain the values for each border div
       const borderValues1 = ['100%', '32px', '100%', '32px'];
       const borderCls = ['bot', 'right', 'top', 'left'];

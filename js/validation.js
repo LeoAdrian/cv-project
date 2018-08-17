@@ -36,19 +36,20 @@
       // const keys  = Object.keys(credentials);
       // const values = Object.values(credentials);
       formEl.forEach( (input, index) => {
+
         const errorLabel = document.createElement('P');
         const error = getErrorNode(input, 'error');
         const arrow = getErrorNode(input, 'arrow');
         // console.log('Validation', input.className);
         // Take into consideration only inputs that are not hidden
         if(input.parentNode.className.search(/\shidden-input/) === -1){
+          console.log('Input is: ', input);
           // First error
           // If user didn't insert anything, throw error
           if(!input.value) {
             check.push({value: false, cause:'User didn\'t insert any value'});
             // Call function that return an element based on its class
               // Get error and arrow elements and add class bad to them
-              console.log(error);
             error.classList.add('bad');
             arrow.classList.add('bad');
 
@@ -75,18 +76,18 @@
           } else if( input.value && input.value !== credentials[input.name] ){
             check.push({value:false, cause: `${initUp(input.name)} doesn't match`});
 
-            // error.classList.add('bad');
-            // arrow.classList.add('bad');
+            error.classList.add('bad');
+            arrow.classList.add('bad');
 
             // Hardcoded method
-            input.previousElementSibling.classList.add('bad');
+            // input.previousElementSibling.classList.add('bad');
             // .classList.add('bad');
             input.previousElementSibling.innerHTML = `${initUp(input.name)} doesn't match`;
             // Remove the errors automatically if they don't disappear
             setTimeout( () => {
-              // error.remove('bad');
-              // arrow.remove('bad');
-              input.previousElementSibling.classList.remove('bad');
+              error.classList.remove('bad');
+              arrow.classList.remove('bad');
+              // input.previousElementSibling.classList.remove('bad');
             }, 5000);
           } else {
             check.push({value:true, cause: `${initUp(input.name)} did match`});
