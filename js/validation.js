@@ -37,15 +37,30 @@
       // const values = Object.values(credentials);
       formEl.forEach( (input, index) => {
         const errorLabel = document.createElement('P');
-        if(input.className !== 'hidden-input'){
+        const error = getErrorNode(input, 'error');
+        const arrow = getErrorNode(input, 'arrow');
+        // console.log('Validation', input.className);
+        // Take into consideration only inputs that are not hidden
+        if(input.parentNode.className.search(/\shidden-input/) === -1){
+          // First error
+          // If user didn't insert anything, throw error
           if(!input.value) {
             check.push({value: false, cause:'User didn\'t insert any value'});
-            input.previousElementSibling.classList.add('bad');
+            // Call function that return an element based on its class
+              // Get error and arrow elements and add class bad to them
+              console.log(error);
+            error.classList.add('bad');
+            arrow.classList.add('bad');
+
+
+            // Hardcoded method
+            // input.previousElementSibling.classList.add('bad');
             input.previousElementSibling.innerHTML = 'User didn\'t insert any value';
             setTimeout( () => {
-              console.log(input.previousElementSibling);
-              input.previousElementSibling.classList.remove('bad');
-            }, 10000);
+              error.classList.remove('bad');
+              arrow.classList.remove('bad');
+              // input.previousElementSibling.classList.remove('bad');
+            }, 5000);
             // input.previousSibling.classList.add('bad');
             // const emptyInpText = document.createTextNode('User didn\'t insert any value');
             // errorLabel.appendChild(emptyInpText);
@@ -53,29 +68,65 @@
             // input.parentNode.insertBefore(errorLabel, input);
             // self.disabled = true;
             // input.appendChild(errorLabel);
+
+            // Second error
+            // credentials, throw error
+            // If user inserted something that doesn't corespond to the correct
           } else if( input.value && input.value !== credentials[input.name] ){
             check.push({value:false, cause: `${initUp(input.name)} doesn't match`});
+
+            // error.classList.add('bad');
+            // arrow.classList.add('bad');
+
+            // Hardcoded method
             input.previousElementSibling.classList.add('bad');
+            // .classList.add('bad');
             input.previousElementSibling.innerHTML = `${initUp(input.name)} doesn't match`;
+            // Remove the errors automatically if they don't disappear
             setTimeout( () => {
+              // error.remove('bad');
+              // arrow.remove('bad');
               input.previousElementSibling.classList.remove('bad');
-            }, 10000);
+            }, 5000);
           } else {
             check.push({value:true, cause: `${initUp(input.name)} did match`});
           }
         }
       })
+      // Check array contains objects with information regarding the success of the login operation
       check.forEach(obj => {
         obj.cause ? console.log(obj.cause) : console.log('Value was TRUE');
         // if(obj.cause && obj.)
       })
       console.log(check);
+
       if(checkForFalseBitWise(check)) {
         alert('Successful login');
       }
     // }
     removeErr();
     }
+
+    // Returns the html element that contains the error msg
+    function getErrorNode(htmlEL, className) {
+      // Use the spread operator on the parent node in order to have an array
+      // with all its children
+        const nodesArr = [...htmlEL.parentNode.children];
+        let errorNode;
+        // Count should check for how many times a node has been assigned
+        // to errorNode
+        let count = 0;
+        // Go through each node and check if
+        // it's the correct one (i.e. error node)
+        nodesArr.forEach(node => {
+          if(node.className.search(className) !== -1){
+            errorNode = node;
+            count++;
+          }
+        });
+        if(count > 1) throw new Error('Only one error div should be available');
+        return errorNode;
+    };
 
     function removeErr() {
       formEl.forEach(input => {
@@ -89,10 +140,14 @@
       });
       };
 
+    // Recursive function that will return
+    // true if all elements are TRUE
+    // false if at least one element is false
+
     function checkForFalseBitWise(arr) {
       if(arr.length === 1 ){
  		     return arr[0].value;
-	      }
+       };
 	    return arr[0].value & checkForFalseBitWise(arr.slice(1));
     };
 

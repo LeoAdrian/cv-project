@@ -253,22 +253,46 @@ hr {
   /* transform: translateY(-25px); */
   color: #FFF;
   position:absolute;
-  opacity:0;
+  /* opacity:0; */
+  display:none;
   transition: opacity .5s;
+  top:-22px;
+  background-color: white;
+  width: 100%;
+  color: black;
+  border-radius: 3px;
+  text-align: center;
 }
-.err1 {
+/* Class for error card */
+  /* triangle for error msg */
+.arrow {
+    width: 0;
+    height: 0;
+    position: absolute;
+    /* opacity:0; */
+    display:none;
+    border-right: 10px solid transparent;
+    border-top: 10px solid white;
+    border-left: 10px solid transparent;
+    top: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+/* .err1 {
   top:-10px;
 }
 .err2 {
   top:60px;
-}
+} */
 .bad {
-  opacity:1;
-  text-shadow:
+  /* opacity:1; */
+  display:block;
+  color:red;
+  /* text-shadow:
    -1px -1px 0 #D93240,
     1px -1px 0 #D93240,
     -1px 1px 0 #D93240,
-     1px 1px 0 #D93240;
+     1px 1px 0 #D93240; */
 }
 .good {
   opacity:1;
@@ -335,42 +359,48 @@ hr {
   transform:translateY(-200%);
   animation: labelGrow .8s linear 0s forwards;
 }
-/* Animated border */
+/* Animated borders */
+/* Class that gives a basic style for all borders */
 .border {
   width:0;
   height:2px;
   background-color:white;
   position:absolute;
-  transition: width 1s;
 }
 .border-bottom {
   left:0;
+  /* transition: width 1s ease-in; */
   /* transform:translateX(-50%); */
   bottom:0;
 }
 .border-right {
   bottom:0;
-  width: 32px;
+  /* width: 32px; */
   right: 0;
   bottom: 0;
-  transition: transform 1s;
+  /* transition: transform 1s; */
+  transition: width .5s ease-in 1s;
   transform-origin: top left;
   transform: rotate(90deg);
   transform-origin: bottom right;
 }
 .border-up {
-  width:20px;
+  /* width:20px; */
   right:0;
   top:0;
+  transition: width 1s ease-in 1.5s
 }
 .border-left {
-  width:10px;
+  /* width:10px; */
   top:0;
   left:0;
   transform-origin: top left;
   transform: rotate(90deg);
-  width: 32px;
+  /* width: 32px; */
+  transition:width .5s ease-out 2.5s;
 }
+
+
 /* Class used to animate the opacity of the input */
 .show-input {
   animation: inputOpacity 0s linear .3s forwards;
@@ -378,6 +408,33 @@ hr {
 
 .modify-labels {
   animation: labelGrow 1s linear .3s forwards;
+}
+
+/* Classes that use the border keyframes */
+.animate-bot {
+  animation: aniBordBot 1s linear forwards;
+}
+.animate-right {
+  animation: aniBordRight .5s linear 1s forwards;
+}
+.animate-top {
+  animation: aniBordTop 1s linear 1.5s forwards;
+}
+.animate-left {
+  animation: aniBordLeft .5s linear 2.5s forwards;
+}
+  /* Classes that make the borders shrink */
+.animate-bot-shrink {
+  animation : aniBordBotShrink 1s linear 2s forwards;
+}
+.animate-right-shrink {
+  animation : aniBordRightShrink .5s linear 1.5s forwards;
+}
+.animate-top-shrink {
+  animation : aniBordTopShrink 1s linear .5s forwards;
+}
+.animate-left-shrink {
+  animation : aniBordLeftShrink .5s linear forwards;
 }
 /* Keyframes */
 @keyframes inputOpacity {
@@ -396,15 +453,55 @@ on top inputs */
     100% {font-size:17.5px}
 }
 @keyframes labelShrink {
-  0% {font-size:17.5px}
+  0%   {font-size:17.5px}
   25%  {font-size:17px}
   50%  {font-size:16.5px}
-  80%   {font-size:16px}
-  100%   {font-size:16px}
+  80%  {font-size:16px}
+  100%  {font-size:16px}
 }
-@keyframes animateBorder {
-  0%     {border-bottom-width:100%}
-  40%    {border-right-width: 100%}
-  80%    {border-top-width:100%}
-  100%   {border-left-width:100%}
+
+/* Keyframes for every border */
+  /* Keyframes triggered on focus */
+  /* They make the borders grow */
+@keyframes aniBordBot {
+  0% {width: 0}
+  /* 70% {width: 50%} */
+  100% {width: 100%}
+}
+@keyframes aniBordRight {
+  0% {width: 0}
+  /* 70% {width: 16px} */
+  100% {width: 32px}
+}
+@keyframes aniBordTop {
+  0% {width: 0}
+  /* 70% {width: 50%} */
+  100% {width: 100%}
+}
+@keyframes aniBordLeft {
+  0% {width: 0}
+  /* 70% {width: 16px} */
+  100% {width: 32px}
+}
+  /* Keyframes triggered onblur */
+  /* Make the borders shrink */
+@keyframes aniBordBotShrink {
+  100% {width: 0}
+  /* 70% {width: 50%} */
+  0% {width: 100%}
+}
+@keyframes aniBordRightShrink {
+  100% {width: 0}
+  /* 70% {width: 16px} */
+  0% {width: 32px}
+}
+@keyframes aniBordTopShrink {
+  100% {width: 0}
+  /* 70% {width: 50%} */
+  0% {width: 100%}
+}
+@keyframes aniBordLeftShrink {
+  100% {width: 0}
+  /* 70% {width: 16px} */
+  0% {width: 32px}
 }

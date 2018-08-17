@@ -113,11 +113,28 @@ function checkToggled( el, index, toggledArr ) {
       // document.querySelector('body').addEventListener('click', function())
       const label = this.previousElementSibling.previousElementSibling;
       console.log(this.value);
+      // Array that will contain the values for each border div
+      const borderValues1 = ['100%', '32px', '100%', '32px'];
+      const borderCls = ['bot', 'right', 'top', 'left'];
       if(type === 'focus') {
         // if(this.value !== 'g') {
           label.classList.add('onlabel');
+          // Go through each border div (input siblings)
+          // give them a width onfocus
+          getNextSiblings(this).forEach( (border, index) => {
+            border.classList.remove('animate-' + borderCls[index] + '-shrink');
+            // Add animation class for each border
+            if(border.style.width) {
+              border.style.width = '';
+            }
+            border.classList.add('animate-' + borderCls[index]);
+
+            // border.style.width = borderValues[index];
+          })
+
           // Enlarge input border
-          this.nextElementSibling.style.width = '100%';
+          // this.nextElementSibling.style.width = '100%';
+
           // this.style.opacity = '1';
           this.classList.add('show-input');
 
@@ -125,23 +142,58 @@ function checkToggled( el, index, toggledArr ) {
       } else {
         if(this.value === '') {
           label.classList.remove('onlabel');
+          getNextSiblings(this).forEach( (border, index) => {
+            // if(border[4].className.match)
+            if(!border.style.width) {
+              border.style.width = borderValues1[index];
+            }
+              border.classList.add('animate-' + borderCls[index] + '-shrink');
+              // border.style.width = '0';
+              border.classList.remove('animate-' + borderCls[index]);
+              // setTimeout(function () {
+              //   border.classList.remove('animate-' + borderCls[index] + '-shrink');
+              // },0);
+
+          })
           // Shrink input border
-          this.nextElementSibling.style.width = '0';
+          // this.nextElementSibling.style.width = '0';
           // this.style.opacity = '0';
           this.classList.remove('show-input');
         }
       }
     }
+    getNextSiblings(this).forEach( (border, index) => {
+        border.style.width = '0px';
+
+    })
   }
 
   function countPrevSiblings( htmlEl ){
-  	var count = 0;
+  	let count = 0,
+        currEl;
   	while(htmlEl.previousElementSibling){
       	 currEl = currEl.previousElementSibling;
   		   count++;
   	}
   	return count;
 }
+
+// Function that returns all siblings after input node
+function getNextSiblings ( htmlEL ){
+  // Array that will store every sibling node
+    const nSiblings = [];
+    // Check if we reach the end of the siblings list
+    // As soon as the next element/node is null
+    // exit loop
+    while(htmlEL.nextElementSibling){
+      // Reassign sibling to htmlEL var
+      // push it into the array
+      htmlEL = htmlEL.nextElementSibling;
+	    nSiblings.push(htmlEL);
+    }
+    // give me back the array
+    return nSiblings;
+  }
 // function showParent(el) {
 //   while(el) {
 //     const prevEl = el;
